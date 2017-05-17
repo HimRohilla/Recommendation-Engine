@@ -1,0 +1,30 @@
+Process to configure WIDGET (USE DEMO DB ATTACHED FOR NOW)
+
+-> Register as a publisher, you will be assigned a UNIQUE_ID
+-> after registering just load any blog of yours by following below process and every blog gets registered with us
+	Your blog MUST contain these 3 
+
+	<meta name="og:title" content="Being Vladimir Putin: Russia’s president gets 20th century geopolitics, what he doesn’t get is 21st century geoeconomics">
+	<meta name="keywords" content="Edit Page blog, politics blog, World blog, Samir Saran blog, TOI Edit Page blog" />
+	<meta name="og:image" content="http://timesofindia.indiatimes.com/photo/57917489.cms?44971">
+
+FURTHER PROCESS:
+
+1. Add below code in the head section of your blog
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <link rel="stylesheet" href="http://localhost:3000/public/assets/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://localhost:3000/public/assets/materialize/css/materialize.min.css">
+    <link rel="stylesheet" href="http://localhost:3000/public/styles/css/index.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="http://localhost:3000/public/styles/css/loading.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-sanitize.js"></script>
+    <script src="http://localhost:3000/public/assets/jquery/dist/jquery.min.js"></script>
+    <script src="http://localhost:3000/public/assets/materialize/js/materialize.min.js"></script>
+	<script data-id="PUBLISHER_UNIQUE_ID" src="http://localhost:3000/public/assets/api/article-script.js"></script>
+
+2. Add below code where you want to place our widget in your <body> section
+
+	<div id="recommendation-engine" ng-app="rec-engine-app" ng-controller="rec-engine-ctrl" dynamic="widget">
+	</div>
+

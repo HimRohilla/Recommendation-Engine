@@ -1,0 +1,186 @@
+<!-- {{serverResponse}} -->
+<div class="row" >
+	<div class="col s12 m8 offset-m2">
+		<div class="main-container z-depth-1">
+			<div class="blue lighten-3 question">
+				Most people are
+				<img ng-src="{{most_reaction}}"> {{most_reaction_name}}
+				about this. What is your reaction?
+			</div>
+
+			<!-- Reaction Module -->
+			<div class="emoticons-box">
+				<div class="row">
+					<div class="col s2 center each-emoticon" ng-repeat="row in reaction_data" id="{{row.reaction_name}}">
+						<div class="counter">{{row.count}}</div>
+						<a href="" title="Happy" ng-click="sendReaction(row.reaction_name);">
+							<img src="{{emoticons_base_path + row.reaction_name + emoticons_extension}}">
+						</a>
+						<div class="reaction">{{row.reaction_name | uppercase}}</div>
+					</div>
+				</div>
+			</div>
+			<!-- Reaction Module -->
+
+
+			<!-- Comments Display section -->
+			<div>
+				<ul class="collection comments-display">
+					<li class="collection-item avatar" ng-repeat="row in comments_data">
+						<img ng-src="{{users_images_base_path + row.photo}}" alt="" class="circle">
+						<span class="title">{{row.fullname}}</span>
+						<p class="content">{{row.comment_text}}</p>
+						<p class="right content">{{row.date_commented}}</p>
+					</li>
+<!--                     <li class="collection-item avatar">
+				<img src="http://localhost:3000/public/img/profile.png" alt="" class="circle">
+				<span class="title">John Doe</span>
+				<p class="content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+			  </li> -->
+		    </ul>
+		</div>
+		<!-- Comments Display section -->
+
+		<!-- Comment Module -->
+		<ul class="collection comments-container">
+			<li class="collection-item avatar">
+				<img ng-src="{{users_images_base_path + 'profile.png'}}" alt="" class="circle">
+				<div class="input-field">
+					<textarea id="comment" ng-model="comment" name="comment" class="materialize-textarea"></textarea>
+					<label for="comment">What do you think about this article?</label>
+					<div class="progress" ng-hide="!submitComment">
+						<div class="indeterminate"></div>
+					</div>
+					<div ng-show="show_error_message">
+						{{error_message}}
+					</div>
+					<button class="btn waves-effect waves-light right" ng-show="user_logged_in" ng-disabled="submitComment" name="submitComment" ng-click="sendComment(comment);">{{comment_button_name}}
+					</button>
+				</div>
+				<div class="login-box" ng-hide="user_logged_in">
+					<p>LOG IN TO COMMENT WITH</p>
+					<a href="http://localhost:3000/users/auth/facebook" title="Facebook">
+						<i class="fa fa-facebook fb-icon"></i>
+					</a>
+					<a href="" title="Twitter">
+						<i class="fa fa-twitter twitter-icon"></i>
+					</a>
+					<a href="" title="Google">
+						<i class="fa fa-google google-icon"></i>
+					</a>
+				</div>
+			</li>
+		</ul>
+		<!-- Comment Module -->
+
+		<div class="blue lighten-3 question">
+			More stories for you
+		</div>
+
+
+		<!-- Suggestion module -->
+		<div class="suggestion-box">
+		    <div class="row">
+			  <div class="col s12 m3" ng-repeat="article in final_articles">
+				<div class="card suggestion-card">
+				    <div class="card-image">
+					  <a href="{{article.article_url}}"><img src="{{article.article_image}}"></a>
+				    </div>
+				    <div class="card-content">
+					  <p>{{article.article_title}}</p>
+				    </div>
+				</div>
+			  </div>
+
+<!-- 			  <div class="col s12 m3">
+				<div class="card suggestion-card">
+				    <div class="card-image">
+					  <img src="http://localhost:3000/public/img/article/article-2.jpg">
+				    </div>
+				    <div class="card-content">
+					  <p>Full text of Mann ki Baat: PM Modi lauds Isro, keeps emphasis on technology in 29th radio address</p>
+				    </div>
+				</div>
+			  </div>
+
+			  <div class="col s12 m3">
+				<div class="card suggestion-card">
+				    <div class="card-image">
+					  <img src="http://localhost:3000/public/img/article/article-3.jpg">
+				    </div>
+				    <div class="card-content">
+					  <p>Nokia MWC 2017 Event: Rumoured Price, Specifications, and How to Watch Live Stream</p>
+				    </div>
+				</div>
+			  </div>
+
+			  <div class="col s12 m3">
+				<div class="card suggestion-card">
+				    <div class="card-image">
+					  <img src="http://localhost:3000/public/img/article/article-4.jpg">
+				    </div>
+				    <div class="card-content">
+					  <p>Steve Smith Warns Players India Will 'Come Back Hard'</p>
+				    </div>
+				</div>
+			  </div> -->
+		    </div>
+		</div>            
+<!--             <div class="suggestion-box">
+			<div class="owl-carousel owl-theme">
+				<div class="item">
+					<div class="card suggestion-card">
+						<div class="card-image">
+							<img src="img/article/article-1.JPG">
+						</div>
+						<div class="card-content">
+							<p>Steve O’Keefe’s success mantra in Pune Test: Giving up alcohol and Big Bash</p>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<div class="card suggestion-card">
+						<div class="card-image">
+							<img src="img/article/article-2.jpg">
+						</div>
+						<div class="card-content">
+							<p>Full text of Mann ki Baat: PM Modi lauds Isro, keeps emphasis on technology in 29th radio address</p>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<div class="card suggestion-card">
+						<div class="card-image">
+							<img src="img/article/article-3.jpg">
+						</div>
+						<div class="card-content">
+							<p>Nokia MWC 2017 Event: Rumoured Price, Specifications, and How to Watch Live Stream</p>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<div class="card suggestion-card">
+						<div class="card-image">
+							<img src="img/article/article-4.jpg">
+						</div>
+						<div class="card-content">
+							<p>Steve Smith Warns Players India Will 'Come Back Hard'</p>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<div class="card suggestion-card">
+						<div class="card-image">
+							<img src="img/article/article-1.JPG">
+						</div>
+						<div class="card-content">
+							<p>Steve O’Keefe’s success mantra in Pune Test: Giving up alcohol and Big Bash</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> -->
+		<!-- Suggestion module -->
+	  </div>
+    </div>
+</div>
